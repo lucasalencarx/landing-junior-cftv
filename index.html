@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junior CFTV | Segurança 24h</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="config.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#111418;
+color:#fff;
+overflow-x:hidden;
+}
+
+:root{
+--gold:#f5b800;
+--dark:#0d1117;
+--card:#1c222b;
+}
+
+/* HEADER */
+header{
+position:fixed;
+width:100%;
+top:0;
+padding:10px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(6px);
+z-index:1000;
+}
+
+.logo img{
+height:85px;
+object-fit:contain;
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0;
+height:2px;
+background:var(--gold);
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.hamburger{
+display:none;
+font-size:26px;
+cursor:pointer;
+color:#fff;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+position:fixed;
+top:0;
+right:-100%;
+width:75%;
+height:100vh;
+background:#0d1117;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:40px;
+transition:.4s;
+z-index:2000;
+}
+
+.mobile-menu a{
+color:#fff;
+text-decoration:none;
+font-size:20px;
+}
+
+.mobile-menu.active{
+right:0;
+}
+
+/* HERO SLIDER */
+.hero{
+height:65vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+background-position:center;
+transition:background-image 1.2s ease-in-out;
+padding-top:120px;
+}
+
+.hero-overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+top:0;
+left:0;
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:800px;
+}
+
+.hero h1{
+font-size:clamp(28px,4vw,46px);
+margin-bottom:20px;
+}
+
+.hero p{
+color:#ddd;
+margin-bottom:25px;
+font-size:18px;
+}
+
+.btn{
+background:linear-gradient(90deg,var(--gold),#c99700);
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+color:#000;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 15px var(--gold);
+}
+
+/* SECTIONS */
+section{
+padding:20px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+color:var(--white);
+font-size:28px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:var(--card);
+padding:30px;
+border-radius:18px;
+text-align:center;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,.5);
+}
+
+.card:active{
+transform:scale(.97);
+}
+
+.card i{
+font-size:35px;
+color:var(--gold);
+margin-bottom:15px;
+}
+
+.cliente-img{
+width:85px;
+height:85px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:3px solid var(--gold);
+}
+
+iframe{
+border-radius:18px;
+}
+
+/* MOBILE FLATLIST */
+@media(max-width:900px){
+
+nav{
+display:none;
+}
+
+.hamburger{
+display:block;
+}
+
+.logo img{
+height:65px;
+}
+
+.hero{
+height:60vh;
+}
+
+.grid{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+gap:20px;
+padding-bottom:10px;
+}
+
+.card{
+min-width:85%;
+scroll-snap-align:center;
+}
+
+.grid::-webkit-scrollbar{
+display:none;
+}
+
+}
+
+footer{
+background:#0c0f14;
+padding:40px;
+text-align:center;
+border-top:1px solid #222;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">
+<img src="logomarca2.png" alt="Junior CFTV">
+</div>
+
+<nav>
+<a href="#servicos">Serviços</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#video">Vídeo</a>
+<a href="#mapa">Localização</a>
+</nav>
+
+<div class="hamburger" onclick="toggleMenu()">
+<i class="fa fa-bars"></i>
+</div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="#servicos" onclick="toggleMenu()">Serviços</a>
+<a href="#depoimentos" onclick="toggleMenu()">Depoimentos</a>
+<a href="#video" onclick="toggleMenu()">Vídeo</a>
+<a href="#mapa" onclick="toggleMenu()">Localização</a>
+</div>
+
+<section class="hero">
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<h1 id="heroTitulo"></h1>
+<p id="heroDescricao"></p>
+<a href="#" class="btn">Solicitar Orçamento</a>
+</div>
+</section>
+
+<section id="servicos">
+<h2 class="section-title">Nossos Serviços</h2>
+<div class="grid" id="servicosContainer"></div>
+</section>
+
+<section id="depoimentos">
+<h2 class="section-title">Depoimentos</h2>
+<div class="grid" id="depoimentosContainer"></div>
+</section>
+
+<section id="video">
+<h2 class="section-title">Vídeo Institucional</h2>
+<iframe id="videoFrame" width="100%" height="450"></iframe>
+</section>
+
+<section id="mapa">
+<h2 class="section-title">Nossa Localização</h2>
+<iframe id="mapaFrame" width="100%" height="450"></iframe>
+</section>
+
+<footer>
+<p>© 2026 Junior CFTV - Segurança Eletrônica</p>
+</footer>
+
+<script>
+
+/* MENU MOBILE */
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+/* HERO TEXTO */
+document.getElementById("heroTitulo").innerText = SITE_CONFIG.hero.titulo;
+document.getElementById("heroDescricao").innerText = SITE_CONFIG.hero.descricao;
+
+/* SLIDER AUTOMÁTICO */
+const hero = document.querySelector(".hero");
+const imagens = SITE_CONFIG.hero.imagens;
+let index = 0;
+
+function trocarImagem(){
+hero.style.backgroundImage = `url(${imagens[index]})`;
+index = (index + 1) % imagens.length;
+}
+
+trocarImagem();
+setInterval(trocarImagem, 4000);
+
+/* SERVIÇOS */
+const servicosContainer = document.getElementById("servicosContainer");
+SITE_CONFIG.servicos.forEach(servico=>{
+servicosContainer.innerHTML += `
+<div class="card">
+<i class="fa-solid ${servico.icone}"></i>
+<h3>${servico.titulo}</h3>
+<p>${servico.descricao}</p>
+</div>
+`;
+});
+
+/* DEPOIMENTOS */
+const depoContainer = document.getElementById("depoimentosContainer");
+SITE_CONFIG.depoimentos.forEach(dep=>{
+depoContainer.innerHTML += `
+<div class="card">
+<img src="${dep.foto}" class="cliente-img">
+<p>"${dep.texto}"</p>
+<strong>- ${dep.nome}</strong>
+</div>
+`;
+});
+
+/* VIDEO & MAPA */
+document.getElementById("videoFrame").src = SITE_CONFIG.video;
+document.getElementById("mapaFrame").src = SITE_CONFIG.mapa;
+
+</script>
+
+</body>
+</html>
