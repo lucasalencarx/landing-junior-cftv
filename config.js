@@ -24,12 +24,12 @@ descricao: "Proteção residencial e comercial."
 },
 {
 icone: "fa-shield-halved",
-titulo: "Alarmes Inteligentes",
-descricao: "Proteção residencial e comercial."
+titulo: "Reparo sistemas CFTV",
+descricao: "Reparos de instalações"
 },
 {
 icone: "fa-shield-halved",
-titulo: "Alarmes Inteligentes",
+titulo: "Monitoramento tempo real",
 descricao: "Proteção residencial e comercial."
 }
 ],
@@ -59,7 +59,7 @@ texto: "Serviço excelente e rápido."
 
 ],
 
-video: "https://www.youtube.com/watch?v=y-GDshIgKwI",
+video: "https://www.youtube.com/watch?v=YKK2livDapY",
 mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12"
 
 };
